@@ -5,11 +5,13 @@ import java.util.*;
 public class Restaurant {
 	private TreeSet<Mozo> mozos;
 	private HashSet<Mesa> mesas;
+	private HashSet<Pedido> carta;
 	private String nombreDelResto;
 	public Restaurant(String nombreDelResto) {
 		this.nombreDelResto = nombreDelResto;
 		mozos = new TreeSet<Mozo>();
 		mesas = new HashSet<Mesa>();
+		carta = new HashSet<Pedido>();
 	}
 	public Boolean agregarMozo(Mozo nuevo) {
 		for (Mozo mozo : mozos) {

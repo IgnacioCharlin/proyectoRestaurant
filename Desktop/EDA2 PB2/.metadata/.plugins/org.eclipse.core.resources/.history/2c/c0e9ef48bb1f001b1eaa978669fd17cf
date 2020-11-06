@@ -1,0 +1,16 @@
+package ar.unlam.eda2;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class TestRestaurant {
+
+	@Test
+	public void CrearMozo() {
+		Persona juan = new Mozo("juan", "Gonzales", (long) 123, 123);
+		assertNotNull(juan);
+	}
+
+}

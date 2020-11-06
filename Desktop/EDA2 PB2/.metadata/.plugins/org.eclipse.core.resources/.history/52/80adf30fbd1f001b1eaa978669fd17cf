@@ -1,0 +1,33 @@
+package ar.unlam.eda2;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class TestRestaurant {
+
+	@Test
+	public void CrearMozo() {
+		Persona juan = new Mozo("juan", "Gonzales", (long) 123, 123);
+		assertNotNull(juan);
+		
+	}
+	
+	@Test
+	public void CrearMesa() {
+		Mesa mesa1 = new Mesa(4,001);
+		assertNotNull(mesa1);
+	}
+	
+	@Test
+	public void CrearBebida() {
+		Pedido Cerveza = new Bebida("Cerveza", (long)100, 1);
+		
+	}
+	
+	
+	
+	
+
+}

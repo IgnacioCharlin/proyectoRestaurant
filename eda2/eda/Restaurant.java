@@ -1,4 +1,4 @@
-package ar.unlam.eda2;
+package eda;
 
 import java.util.HashSet;
 import java.util.TreeSet;

@@ -1,4 +1,4 @@
-package ar.unlam.eda2;
+package eda;
 
 public class Comida extends Pedido {
 	private String descripcion;

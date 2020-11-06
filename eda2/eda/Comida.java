@@ -1,16 +1,16 @@
 package eda;
 
-public class Comida extends Pedido {
+public class Comida extends Alimento {
 	private String descripcion;
 	private Double precio;
 	
-	public Comida(String descripcion, Double precio, Integer numeroDePedido) {
-		super(numeroDePedido);
+	public Comida(String descripcion, Double precio) {
+		super(descripcion);
 		this.descripcion = descripcion;
 		this.precio = precio;
 	}
 	
-	protected String getDescripcion() {
+	public String getDescripcion() {
 		return descripcion;
 	}
 	

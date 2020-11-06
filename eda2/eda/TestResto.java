@@ -28,14 +28,14 @@ public class TestResto {
 	
 	@Test
 	public void CrearBebida() {
-		Pedido cerveza = new Bebida("Cerveza",100d, 1);
+		Alimento cerveza = new Bebida("Cerveza",100.0);
 		assertNotNull(cerveza);
 		
 	}
 	
 	@Test
 	public void CrearComidaa() {
-		Pedido papitas = new Comida("Cerveza",100d, 1);
+		Alimento papitas = new Comida("papas",100.0);
 		assertNotNull(papitas);
 		
 	}
@@ -50,20 +50,18 @@ public class TestResto {
 	
 	@Test
 	public void queSePuedaAsignarUnMozoAlRestaurant() {
-		Persona juan = new Mozo("juan", "Gonzales", (long) 123, 123);
+		Mozo juan = new Mozo("juan", "Gonzales", (long) 123, 123);
 		Restaurant resto1 = new Restaurant("Antares");
 		
-		resto1.agregarMozo(juan);
-		//Me da error, porque le paso un objeto del tipo persona y el metodo de la clase Restaurant espera un objeto mozo
+		assertTrue(resto1.agregarMozo(juan));
 	}
 	
 	@Test
 	public void queSePuedaAsignarUnClienteAlRestaurant() {
-		Persona juan = new Cliente("juan", "Gonzales", (long) 123);
+		Cliente juan = new Cliente("juan", "Gonzales", (long) 123);
 		Restaurant resto1 = new Restaurant("Antares");
 		
 		resto1.agregarCliente(juan);
-		//Me da error, porque le paso un objeto del tipo persona y el metodo de la clase Restaurant espera un objeto Cliente
 	}
 	
 	@Test
@@ -72,12 +70,41 @@ public class TestResto {
 		Restaurant resto1 = new Restaurant("Antares");
 		
 		resto1.agregarMesa(mesa1);
-		//Este me funciona porque no tiene aplicado polimorfismo, chequear eso con el profe.
 		
 		Integer cantidadMesasEnElBar = resto1.getMesas().size();
 		Integer cantidadEsperada = 1;
 		
 		assertEquals(cantidadEsperada,cantidadMesasEnElBar);
+
+	}
+	
+	@Test
+	public void AgregarComidadALaCarta() {
+		Restaurant resto1 = new Restaurant("Antares");
+		Alimento pizza = new Comida("pizza", 150.0);
+		
+		assertTrue(resto1.agregarComidaALaCarta(pizza));
+
+	}
+	@Test
+	public void AgregarPedidoAUnaMesa() {
+		Restaurant resto1 = new Restaurant("Antares");
+		Mesa mesa1 = new Mesa(4,001);
+		Persona juan = new Mozo("juan", "Gonzales", (long) 123, 123);
+		Pedido nuevo = new Pedido(1, mesa1,  (Mozo)juan);
+		assertNotNull(nuevo);
+	}
+	@Test
+	public void AgregarComidaAlPedido() {
+		Restaurant resto1 = new Restaurant("Antares");
+		Mesa mesa1 = new Mesa(4,001);
+		Persona juan = new Mozo("juan", "Gonzales", (long) 123, 123);
+		Pedido nuevo = new Pedido(1, mesa1,  (Mozo)juan);
+		Alimento pizza = new Comida("pizza", 150.0);
+		Alimento cerveza = new Bebida("Cerveza",100.0);
+		nuevo.agregarAlimentoAlPedido(pizza);
+		nuevo.agregarAlimentoAlPedido(cerveza);
+		
 
 	}
 }

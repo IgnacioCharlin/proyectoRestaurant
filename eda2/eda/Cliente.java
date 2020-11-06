@@ -1,6 +1,6 @@
 package eda;
 
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Comparable<Cliente> {
 	private String nombre;
 	private String apellido;
 	private Long dni;
@@ -10,6 +10,12 @@ public class Cliente extends Persona {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
+	}
+
+	@Override
+	public int compareTo(Cliente o) {
+		// TODO Auto-generated method stub
+		return this.dni.compareTo(o.dni);
 	}
 	
 }

@@ -1,7 +1,7 @@
 package eda;
 
 
-public class Mozo extends Persona{
+public class Mozo extends Persona implements Comparable<Mozo>{
 	private String nombre;
 	private String apellido;
 	private Long dni;
@@ -46,6 +46,12 @@ public class Mozo extends Persona{
 		} else if (!legajo.equals(other.legajo))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Mozo o) {
+		
+		return this.legajo.compareTo(o.legajo);
 	}
 	
 	

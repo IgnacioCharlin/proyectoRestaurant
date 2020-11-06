@@ -1,10 +1,11 @@
-package eda2;
+package ar.unlam.eda2;
 
 public abstract class Pedido {
 	private Integer numeroDePedido;
 
-	public Pedido() {
+	public Pedido(Integer numeroDePedido) {
 		super();
+		this.numeroDePedido = numeroDePedido;
 	}
 
 	protected Integer getNumeroDePedido() {

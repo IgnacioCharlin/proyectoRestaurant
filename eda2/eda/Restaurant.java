@@ -37,7 +37,15 @@ public class Restaurant {
 	}
 	
 	public Boolean agregarPedido(Pedido nuevo) {
-		return pedidos.add(nuevo);
+		for (Mozo mozo : mozos) {
+			for (Mesa mesa : mesas) {
+				if (nuevo.getMozo().equals(mozo) && nuevo.getNroDeMesa().equals(mesa) ) {
+					return pedidos.add(nuevo);
+				}
+			}
+		}
+		return false;
+		
 	}
 	
 	public TreeSet<Cliente> getClientes() {

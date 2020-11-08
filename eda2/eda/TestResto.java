@@ -86,25 +86,31 @@ public class TestResto {
 		assertTrue(resto1.agregarComidaALaCarta(pizza));
 
 	}
+	
 	@Test
-	public void AgregarPedidoAUnaMesa() {
+	public void CrearUnPedido() {
 		Restaurant resto1 = new Restaurant("Antares");
 		Mesa mesa1 = new Mesa(4,001);
-		Persona juan = new Mozo("juan", "Gonzales", (long) 123, 123);
-		Pedido nuevo = new Pedido(1, mesa1,  (Mozo)juan);
-		assertNotNull(nuevo);
+		resto1.agregarMesa(mesa1);
+		Mozo juan = new Mozo("juan", "Gonzales", (long) 123, 123);
+		resto1.agregarMozo(juan);
+		Pedido nuevo = new Pedido(1, mesa1, juan);
+		assertTrue(resto1.agregarPedido(nuevo));
+
 	}
+	
 	@Test
-	public void AgregarComidaAlPedido() {
+	public void agregarComidaAlPedido() {
 		Restaurant resto1 = new Restaurant("Antares");
 		Mesa mesa1 = new Mesa(4,001);
-		Persona juan = new Mozo("juan", "Gonzales", (long) 123, 123);
-		Pedido nuevo = new Pedido(1, mesa1,  (Mozo)juan);
+		resto1.agregarMesa(mesa1);
+		Mozo juan = new Mozo("juan", "Gonzales", (long) 123, 123);
+		resto1.agregarMozo(juan);
+		Pedido nuevo = new Pedido(1, mesa1, juan);
+		resto1.agregarPedido(nuevo);
 		Alimento pizza = new Comida("pizza", 150.0);
-		Alimento cerveza = new Bebida("Cerveza",100.0);
-		nuevo.agregarAlimentoAlPedido(pizza);
-		nuevo.agregarAlimentoAlPedido(cerveza);
-		
+		resto1.agregarComidaALaCarta(pizza);
+		assertTrue(nuevo.agregarAlimentoAlPedido(pizza, resto1));
 
 	}
 }

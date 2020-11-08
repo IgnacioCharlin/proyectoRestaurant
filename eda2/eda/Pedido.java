@@ -13,11 +13,12 @@ public class Pedido implements Comparable<Pedido> {
 		this.numeroDePedido = numeroDePedido;
 		this.mesa = mesa;
 		this.mozo = mozo;
+		alimentosEnElPedido = new HashSet<Alimento>();
 	}
 
 	public Boolean agregarAlimentoAlPedido(Alimento nuevo , Restaurant actual) {
-		for (int i = 0; i < actual.getCarta().size(); i++) {
-			if (nuevo.getDescripcion().equals(actual.getCarta().contains(nuevo.getClass()))) {
+		for (Alimento alimento : actual.getCarta()) {
+			if (nuevo.getDescripcion().equals(alimento.getDescripcion())) {
 				return alimentosEnElPedido.add(nuevo);
 			}
 		}
@@ -65,4 +66,5 @@ public class Pedido implements Comparable<Pedido> {
 	@Override
 	public int compareTo(Pedido arg0) {
 		return numeroDePedido.compareTo(arg0.numeroDePedido);
-	}}
+	}
+}

@@ -24,28 +24,69 @@ public class Restaurant {
 		return mozos.add(nuevo);
 	}
 	
-	public Boolean agregarCliente(Cliente nuevo) {
-		return this.clientes.add(nuevo);
-	}
-	
 	public Boolean agregarMesa(Mesa nuevo) {
 		return this.mesas.add(nuevo);
+	}
+	
+	public Boolean asignarMesaAlCliente(Mesa mesa , Cliente cliente) {
+		if (mesa.getOcupada()==false) {
+			mesa.setOcupada(true);
+			return clientes.add(cliente);
+		}
+		return false;
 	}
 	
 	public Boolean agregarComidaALaCarta(Alimento nuevo) {
 		return carta.add(nuevo);
 	}
-	
+	public Boolean agregarComidaAlPedido(Alimento nuevo , Pedido actual) {
+		for (Alimento alimento : carta) {
+			for (Pedido pedido : pedidos) {
+				if (alimento.getDescripcion().equals(nuevo.getDescripcion())&& actual.equals(pedido)) {
+					return actual.agregarAlimentoAlPedido(nuevo);
+				}
+			}
+		}
+		return false;
+	}
 	public Boolean agregarPedido(Pedido nuevo) {
 		for (Mozo mozo : mozos) {
 			for (Mesa mesa : mesas) {
-				if (nuevo.getMozo().equals(mozo) && nuevo.getNroDeMesa().equals(mesa) ) {
+				if (nuevo.getMozo().equals(mozo) && nuevo.getNroDeMesa().equals(mesa) && nuevo.getNroDeMesa().getOcupada().equals(true) ) {
 					return pedidos.add(nuevo);
 				}
 			}
 		}
 		return false;
 		
+	}
+	
+	public Double cerrarMesaYTotalDeGastadoEnLaMesa (Integer nroDePedido) {
+		for (Pedido pedido : pedidos) {
+			if (pedido.getNumeroDePedido().equals(nroDePedido)) {
+				pedido.getNroDeMesa().setOcupada(false);
+				return pedido.getTotalDelPedido();
+			}
+		}
+		return 0.0;
+	}
+	
+	public Integer cantidaDeMesasLibres() {
+		Integer cantidadDeMesasLibres=0;
+		for (Mesa mesa : mesas) {
+			if (mesa.getOcupada().equals(false)) {
+				cantidadDeMesasLibres++;
+			}
+		}
+		return cantidadDeMesasLibres;
+	}
+	
+	public Double consumoTotalDeTodasLasMesas() {
+		Double total = 0.0;
+		for (Pedido pedido : pedidos) {
+			total += pedido.getTotalDelPedido();
+		}
+		return total;
 	}
 	
 	public TreeSet<Cliente> getClientes() {

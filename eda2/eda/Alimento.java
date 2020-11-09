@@ -2,11 +2,29 @@ package eda;
 
 public abstract class Alimento{
 	private String descripcion;
+	private Double precio;
 
-	public Alimento(String descripcion) {
+	public Alimento(String descripcion, Double precio) {
 		super();
 		this.descripcion = descripcion;
+		this.precio = precio;
 	}
+
+	
+	public Double getPrecio() {
+		return precio;
+	}
+
+
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 
 	public String getDescripcion() {
 		return descripcion;

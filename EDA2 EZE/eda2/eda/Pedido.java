@@ -7,22 +7,20 @@ public class Pedido implements Comparable<Pedido> {
 	private HashSet<Alimento>alimentosEnElPedido;
 	private Mesa mesa;
 	private Mozo mozo;
+	private Double totalDelPedido;
 
 	public Pedido(Integer numeroDePedido, Mesa mesa, Mozo mozo) {
 		super();
 		this.numeroDePedido = numeroDePedido;
 		this.mesa = mesa;
 		this.mozo = mozo;
+		totalDelPedido = 0.0;
 		alimentosEnElPedido = new HashSet<Alimento>();
 	}
 
-	public Boolean agregarAlimentoAlPedido(Alimento nuevo , Restaurant actual) {
-		for (Alimento alimento : actual.getCarta()) {
-			if (nuevo.getDescripcion().equals(alimento.getDescripcion())) {
-				return alimentosEnElPedido.add(nuevo);
-			}
-		}
-		return false;
+	public Boolean agregarAlimentoAlPedido(Alimento nuevo) {
+		totalDelPedido += nuevo.getPrecio();
+		return alimentosEnElPedido.add(nuevo);
 	}
 	
 	public Integer getNumeroDePedido() {
@@ -62,6 +60,23 @@ public class Pedido implements Comparable<Pedido> {
 		this.mesa = nroDeMesa;
 	}
 
+	
+
+	public Mesa getMesa() {
+		return mesa;
+	}
+
+	public void setMesa(Mesa mesa) {
+		this.mesa = mesa;
+	}
+
+	public Double getTotalDelPedido() {
+		return totalDelPedido;
+	}
+
+	public void setTotalDelPedido(Double totalDelPedido) {
+		this.totalDelPedido = totalDelPedido;
+	}
 
 	@Override
 	public int compareTo(Pedido arg0) {

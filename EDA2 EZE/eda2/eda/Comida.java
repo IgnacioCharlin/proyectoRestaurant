@@ -5,7 +5,7 @@ public class Comida extends Alimento {
 	private Double precio;
 	
 	public Comida(String descripcion, Double precio) {
-		super(descripcion);
+		super(descripcion, precio);
 		this.descripcion = descripcion;
 		this.precio = precio;
 	}
@@ -14,15 +14,15 @@ public class Comida extends Alimento {
 		return descripcion;
 	}
 	
-	protected void setDescripcion(String descripcion) {
+	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 	
-	protected Double getPrecio() {
+	public Double getPrecio() {
 		return precio;
 	}
 	
-	protected void setPrecio(Double precio) {
+	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
 	

@@ -2,17 +2,19 @@ package eda;
 
 
 public class Mozo extends Persona implements Comparable<Mozo>{
-	private String nombre;
-	private String apellido;
-	private Long dni;
+//	private String nombre;
+//	private String apellido;
+//	private Long dni;
 	private Integer legajo;
+
 	
 	public Mozo(String nombre, String apellido, Long dni, Integer legajo) {
 		super();
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
+//		this.nombre = nombre;
+//		this.apellido = apellido;
+//		this.dni = dni;
 		this.legajo = legajo;
+
 	}
 	
 	protected Integer getLegajo() {

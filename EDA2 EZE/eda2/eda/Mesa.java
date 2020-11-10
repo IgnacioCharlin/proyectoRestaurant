@@ -3,17 +3,27 @@ package eda;
 public class Mesa {
 	private Integer capacidad;
 	private Integer numeroDeMesa;
+	private Boolean ocupada;
 	
 	public Mesa(Integer capacidad, Integer numeroDeMesa) {
 		super();
 		this.capacidad = capacidad;
 		this.numeroDeMesa = numeroDeMesa;
+		ocupada = false;
 	}
 	
 	protected Integer getCapacidad() {
 		return capacidad;
 	}
 	
+	public Boolean getOcupada() {
+		return ocupada;
+	}
+
+	public void setOcupada(Boolean ocupada) {
+		this.ocupada = ocupada;
+	}
+
 	protected void setCapacidad(Integer capacidad) {
 		this.capacidad = capacidad;
 	}

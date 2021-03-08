@@ -1,1 +1,1 @@
-Proyecto en conjunto con ezequiel y ara sobre un restaurant hecho con java
+Proyecto realizado completamente con java , fue un proyecto realizado en programacion basica 2 en la universidad de la matanza.
